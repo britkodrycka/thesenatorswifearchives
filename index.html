@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Senator's Wife Archives</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h2 class="sr-only">The Senator's Wife Archives — interactive narrative map</h2>
+
+  <!-- LOADING SCREEN -->
+  <div id="loading-screen">
+    <div class="loading-title">✦ The Senator's Wife Archives ✦</div>
+    <div class="loading-spinner"></div>
+    <div class="loading-sub">Loading the archive…</div>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="app" class="hatch" style="display:none;">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="site-header-rule"></div>
+      <div class="site-title" id="site-title-el"></div>
+      <div class="site-sub" id="site-sub-el"></div>
+      <div class="site-author" id="author-display"></div>
+      <button class="admin-btn" onclick="toggleAdmin()">&#9670; Admin</button>
+    </header>
+
+    <!-- ADMIN BAR -->
+    <div class="admin-bar" id="adminBar">
+      <span>&#9670; ADMIN</span>
+      <button class="admin-pill" onclick="openSiteEditor()">Site info</button>
+      <button class="admin-pill" onclick="openWeekEditor()">Week</button>
+      <button class="admin-pill" onclick="openIntroEditor()">Intro text</button>
+      <button class="admin-pill" onclick="openBgEditor()">Background</button>
+      <button class="admin-pill" onclick="openFooterEditor()">Footer</button>
+      <button class="admin-pill" onclick="addLocation()">Add location</button>
+      <button class="admin-pill" onclick="addTimelineStop()">Add timeline stop</button>
+      <button class="admin-pill" onclick="addBook()">Add book</button>
+      <button class="admin-pill exit" onclick="toggleAdmin()">Exit admin</button>
+    </div>
+
+    <!-- WEEK / PROGRESS BAR -->
+    <div class="week-bar">
+      <span class="week-label">Progress</span>
+      <div class="week-pips" id="weekPips"></div>
+      <span class="week-label" id="weekDisplay" style="margin-left:8px;color:var(--gold2);"></span>
+      <span class="week-label" style="margin-left:auto;" id="lastUpdated"></span>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav-strip" id="navStrip"></nav>
+
+    <!-- VIEW OUTLET -->
+    <div id="views"></div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="site-footer-rule"></div>
+      <a id="footer-link" href="#" target="_blank" rel="noopener"></a>
+      <button class="footer-edit-btn" onclick="openFooterEditor()">Edit footer</button>
+    </footer>
+
+  </div><!-- /#app -->
+
+  <!-- TOAST -->
+  <div class="save-toast" id="saveToast"></div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-title" id="modalTitle"></div>
+      <div id="modalBody"></div>
+      <div class="modal-actions" id="modalActions"></div>
+    </div>
+  </div>
+
+  <!-- ① Supabase JS client (CDN — must be first) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  <!-- ② App scripts (order matters) -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
